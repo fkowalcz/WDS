@@ -1,5 +1,3 @@
-// mainwindow.h
-
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
@@ -7,6 +5,9 @@
 #include <QTimer>
 #include <QtCharts>
 #include <QSerialPort>
+#include <QGraphicsScene>
+#include "platform.h"
+#include "ball.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -37,7 +38,13 @@ private:
     QChartView *rollChartView;
     QChartView *pitchChartView;
     QString serialBuffer;
-    qint64 chartDuration; // Added chart duration variable
+    qint64 chartDuration;
+    Platform *platform;
+    Ball *ball;
+    QGraphicsScene *scene;
+    void updatePlatform();
+    void updateBallPosition(double pitch);
+    double calculateBallPosition(double pitch);
 };
 
 #endif // MAINWINDOW_H
