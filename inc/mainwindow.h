@@ -5,7 +5,6 @@
 #include <QTimer>
 #include <QtCharts>
 #include <QSerialPort>
-#include <QGraphicsScene>
 #include "platform.h"
 #include "ball.h"
 
@@ -24,12 +23,16 @@ public:
 private slots:
     void startCountdown();
     void updateClock();
+    void updateAnimation();
     void updateCharts();
     void readSerialData();
+    void increasePlatformWidth();
+    void decreasePlatformWidth();
 
 private:
     Ui::MainWindow *ui;
-    QTimer *timer;
+    QTimer *animationTimer;
+    QTimer *clockTimer;
     QSerialPort *serial;
     QLineSeries *rollSeries;
     QLineSeries *pitchSeries;
@@ -37,12 +40,14 @@ private:
     QChart *pitchChart;
     QChartView *rollChartView;
     QChartView *pitchChartView;
-    QString serialBuffer;
-    qint64 chartDuration;
+    QGraphicsScene *scene;
     Platform *platform;
     Ball *ball;
-    QGraphicsScene *scene;
-    void updatePlatform();
+    QTime startTime;
+    bool isCounting;
+    QString serialBuffer;
+    qint64 chartDuration;
+
     void updateBallPosition(double pitch);
     double calculateBallPosition(double pitch);
 };

@@ -13,6 +13,7 @@ public:
 
     void setPosition(double x, double y);
     void fall();
+    bool isFalling() const;
 
 protected:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr) override;
@@ -20,6 +21,7 @@ protected:
 private:
     double m_x;
     double m_y;
+    bool m_isFalling;
 };
 
 #endif // BALL_H
