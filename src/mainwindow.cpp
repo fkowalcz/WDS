@@ -1,24 +1,13 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QDateTime>
-#include <QtCharts>
-#include <QSerialPort>
-#include "platform.h"
-#include "ball.h"
 #include <QtMath>
-
-using namespace QtCharts;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
     , serial(new QSerialPort(this))
-    , rollSeries(new QLineSeries())
-    , pitchSeries(new QLineSeries())
-    , rollChart(new QChart())
-    , pitchChart(new QChart())
-    , rollChartView(new QChartView(rollChart))
-    , pitchChartView(new QChartView(pitchChart))
+    , chartManager(new ChartManager(this))
     , chartDuration(20 * 1000) // 20 seconds in milliseconds
     , isCounting(false)
 {
@@ -36,45 +25,9 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->pushButton_5, &QPushButton::clicked, this, &MainWindow::decreasePlatformWidth); // Połączenie z przyciskiem zmniejszającym
     connect(ui->pushButton_6, &QPushButton::clicked, this, &MainWindow::increasePlatformWidth); // Połączenie z przyciskiem zwiększającym
 
-    // Configure charts
-    QDateTimeAxis *axisXRoll = new QDateTimeAxis();
-    axisXRoll->setFormat("hh:mm:ss");
-    axisXRoll->setTitleText("Time");
-
-    QDateTimeAxis *axisXPitch = new QDateTimeAxis();
-    axisXPitch->setFormat("hh:mm:ss");
-    axisXPitch->setTitleText("Time");
-
-    QValueAxis *axisYRoll = new QValueAxis();
-    axisYRoll->setRange(-90, 90);
-    axisYRoll->setTitleText("Roll Angle");
-
-    QValueAxis *axisYPitch = new QValueAxis();
-    axisYPitch->setRange(-90, 90);
-    axisYPitch->setTitleText("Pitch Angle");
-
-    rollChart->addSeries(rollSeries);
-    rollChart->addAxis(axisXRoll, Qt::AlignBottom);
-    rollChart->addAxis(axisYRoll, Qt::AlignLeft);
-    rollSeries->attachAxis(axisXRoll);
-    rollSeries->attachAxis(axisYRoll);
-    rollChart->setTitle("Roll Angle");
-    rollChart->legend()->hide();
-
-    pitchChart->addSeries(pitchSeries);
-    pitchChart->addAxis(axisXPitch, Qt::AlignBottom);
-    pitchChart->addAxis(axisYPitch, Qt::AlignLeft);
-    pitchSeries->attachAxis(axisXPitch);
-    pitchSeries->attachAxis(axisYPitch);
-    pitchChart->setTitle("Pitch Angle");
-    pitchChart->legend()->hide();
-
-    rollChartView->setRenderHint(QPainter::Antialiasing);
-    pitchChartView->setRenderHint(QPainter::Antialiasing);
-
     // Add chart views to layout
-    ui->horizontalLayout->addWidget(rollChartView);
-    ui->horizontalLayout_2->addWidget(pitchChartView);
+    ui->horizontalLayout->addWidget(chartManager->getRollChartView());
+    ui->horizontalLayout_2->addWidget(chartManager->getPitchChartView());
 
     // Configure serial port
     serial->setPortName("/dev/ttyACM0"); // Set appropriate port name
@@ -151,8 +104,7 @@ void MainWindow::updateCharts() {
         double pitchValue = dataList[1].toDouble(&ok2);
 
         if (ok1 && ok2) {
-            rollSeries->append(currentTime, rollValue);
-            pitchSeries->append(currentTime, pitchValue);
+            chartManager->updateCharts(currentTime, rollValue, pitchValue);
 
             // Update QLabel
             ui->labelCurrentValue->setText(QString("Roll: %1, Pitch: %2").arg(rollValue).arg(pitchValue));
@@ -163,26 +115,6 @@ void MainWindow::updateCharts() {
             updateBallPosition(pitchValue);
         }
     }
-
-    // Update time axis
-    QDateTime minTime = QDateTime::fromMSecsSinceEpoch(currentTime - chartDuration);
-    QDateTime maxTime = QDateTime::fromMSecsSinceEpoch(currentTime);
-
-    QDateTimeAxis *axisXRoll = qobject_cast<QDateTimeAxis*>(rollChart->axes(Qt::Horizontal).first());
-    if (axisXRoll) {
-        axisXRoll->setMin(minTime);
-        axisXRoll->setMax(maxTime);
-    }
-
-    QDateTimeAxis *axisXPitch = qobject_cast<QDateTimeAxis*>(pitchChart->axes(Qt::Horizontal).first());
-    if (axisXPitch) {
-        axisXPitch->setMin(minTime);
-        axisXPitch->setMax(maxTime);
-    }
-
-    // Refresh chart views
-    rollChartView->repaint();
-    pitchChartView->repaint();
 }
 
 void MainWindow::updateBallPosition(double pitch) {
@@ -260,8 +192,7 @@ void MainWindow::readSerialData() {
                 if (ok1 && ok2) {
                     // Add read data to series
                     qint64 currentTime = QDateTime::currentMSecsSinceEpoch();
-                    rollSeries->append(currentTime, rollValue);
-                    pitchSeries->append(currentTime, pitchValue);
+                    chartManager->updateCharts(currentTime, rollValue, pitchValue);
 
                     // Update QLabel
                     ui->labelCurrentValue->setText(QString("Roll: %1, Pitch: %2").arg(rollValue).arg(pitchValue));

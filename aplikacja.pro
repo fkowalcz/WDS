@@ -21,12 +21,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     src/ball.cpp \
+    src/charts.cpp \
     src/main.cpp \
     src/mainwindow.cpp \
     src/platform.cpp
 
 HEADERS += \
     inc/ball.h \
+    inc/charts.h \
     inc/mainwindow.h \
     inc/platform.h
 

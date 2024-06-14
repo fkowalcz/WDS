@@ -3,10 +3,10 @@
 
 #include <QMainWindow>
 #include <QTimer>
-#include <QtCharts>
 #include <QSerialPort>
 #include "platform.h"
 #include "ball.h"
+#include "charts.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -34,12 +34,7 @@ private:
     QTimer *animationTimer;
     QTimer *clockTimer;
     QSerialPort *serial;
-    QLineSeries *rollSeries;
-    QLineSeries *pitchSeries;
-    QChart *rollChart;
-    QChart *pitchChart;
-    QChartView *rollChartView;
-    QChartView *pitchChartView;
+    ChartManager *chartManager;
     QGraphicsScene *scene;
     Platform *platform;
     Ball *ball;
