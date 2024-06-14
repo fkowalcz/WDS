@@ -24,6 +24,8 @@ private slots:
 private:
     QSerialPort *serial;
     QString serialBuffer;
+
+    uint16_t crc16_ccitt(const QByteArray &data);
 };
 
 #endif // SERIALMANAGER_H

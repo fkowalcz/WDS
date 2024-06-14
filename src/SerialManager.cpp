@@ -1,17 +1,34 @@
 #include "SerialManager.h"
-#include <QDateTime>
-#include <QDebug> // Add this include
+#include <QSerialPortInfo>
+#include <QDebug>
+
+// CRC calculation function
+uint16_t SerialManager::crc16_ccitt(const QByteArray &data) {
+    uint16_t crc = 0xFFFF;
+    for (char byte : data) {
+        crc ^= static_cast<uint8_t>(byte) << 8;
+        for (int i = 0; i < 8; i++) {
+            if (crc & 0x8000) {
+                crc = (crc << 1) ^ 0x1021;
+            } else {
+                crc = crc << 1;
+            }
+        }
+    }
+    return crc;
+}
 
 SerialManager::SerialManager(QObject *parent)
-    : QObject(parent)
-    , serial(new QSerialPort(this))
+    : QObject(parent), serial(new QSerialPort(this))
 {
+    connect(serial, &QSerialPort::readyRead, this, &SerialManager::readSerialData);
 }
 
 SerialManager::~SerialManager()
 {
-    if (serial->isOpen())
+    if (serial->isOpen()) {
         serial->close();
+    }
 }
 
 void SerialManager::startReading(const QString &portName, qint32 baudRate)
@@ -24,9 +41,9 @@ void SerialManager::startReading(const QString &portName, qint32 baudRate)
     serial->setFlowControl(QSerialPort::NoFlowControl);
 
     if (serial->open(QIODevice::ReadOnly)) {
-        connect(serial, &QSerialPort::readyRead, this, &SerialManager::readSerialData);
+        qDebug() << "Serial port opened successfully!";
     } else {
-        qDebug() << "Failed to open port!"; // qDebug() requires <QDebug> to be included
+        qDebug() << "Failed to open port!";
     }
 }
 
@@ -39,45 +56,39 @@ void SerialManager::stopReading()
 
 void SerialManager::readSerialData()
 {
-    // Read available data from the serial port
     QByteArray data = serial->readAll();
-
-    // Add read data to buffer
     serialBuffer += data;
 
-    // Search for data packets in the buffer
     while (serialBuffer.contains("\n\r")) {
-        // Find the start and end of the data packet
-        int startIndex = serialBuffer.indexOf('b');
-        int endIndex = serialBuffer.indexOf("\n\r", startIndex);
+        int endIndex = serialBuffer.indexOf("\n\r");
+        QString line = serialBuffer.left(endIndex).trimmed();
+        serialBuffer.remove(0, endIndex + 2);
 
-        // If a valid start and end of the data packet are found
-        if (startIndex != -1 && endIndex != -1) {
-            // Extract the data packet
-            QString package = serialBuffer.mid(startIndex, endIndex - startIndex + 2);
+        int crcIndex = line.lastIndexOf(' ');
+        if (crcIndex != -1) {
+            QString dataPart = line.left(crcIndex);
+            QString crcPart = line.mid(crcIndex + 1);
 
-            // Remove the processed data packet from the buffer
-            serialBuffer.remove(0, endIndex + 2);
+            bool ok;
+            uint16_t receivedCrc = crcPart.toUShort(&ok, 16);
+            if (ok) {
+                uint16_t calculatedCrc = crc16_ccitt(dataPart.toUtf8());
+                if (calculatedCrc == receivedCrc) {
+                    QStringList dataList = dataPart.split(' ');
+                    if (dataList.size() == 2) {
+                        bool ok1, ok2;
+                        double rollValue = dataList[0].mid(1).toDouble(&ok1); // Skip 'b' at the beginning
+                        double pitchValue = dataList[1].toDouble(&ok2);
 
-            // Split the data packet into roll and pitch
-            QStringList dataList = package.trimmed().split(' ');
-            if (dataList.size() == 2) {
-                bool ok1, ok2;
-                double rollValue = dataList[0].mid(1).toDouble(&ok1); // Skip 'b' at the beginning
-                double pitchValue = dataList[1].toDouble(&ok2);
-
-                if (ok1 && ok2) {
-                    emit newData(rollValue, pitchValue);
+                        if (ok1 && ok2) {
+                            emit newData(rollValue, pitchValue);
+                        }
+                    }
+                } else {
+                    qDebug() << "CRC mismatch!";
                 }
-            }
-        } else {
-            // If a valid data packet is not found, remove everything before the first 'b' character
-            int invalidStartIndex = serialBuffer.indexOf('b');
-            if (invalidStartIndex != -1) {
-                serialBuffer.remove(0, invalidStartIndex);
             } else {
-                // If no 'b' character is found, clear the buffer
-                serialBuffer.clear();
+                qDebug() << "Invalid CRC format!";
             }
         }
     }
