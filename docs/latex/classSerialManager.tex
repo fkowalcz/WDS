@@ -1,0 +1,132 @@
+\hypertarget{classSerialManager}{}\doxysection{Serial\+Manager Class Reference}
+\label{classSerialManager}\index{SerialManager@{SerialManager}}
+
+
+The \mbox{\hyperlink{classSerialManager}{Serial\+Manager}} class manages serial communication.  
+
+
+
+
+{\ttfamily \#include $<$Serial\+Manager.\+h$>$}
+
+
+
+Inheritance diagram for Serial\+Manager\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=167pt]{classSerialManager__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Serial\+Manager\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=167pt]{classSerialManager__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classSerialManager_ab1198ed6e99d2cbf7ad4cfc8d4dbfa43}{new\+Data}} (double roll\+Value, double pitch\+Value)
+\begin{DoxyCompactList}\small\item\em Emitted when new data is available from the serial port. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSerialManager_a118b6de8b4151da525d644ff1d2ece98}{serial\+Port\+Opened}} (bool is\+Open)
+\begin{DoxyCompactList}\small\item\em Emitted when the serial port is opened or closed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSerialManager_aa2d090c2f7dc822a3fb1f3ac432abd0d}{Serial\+Manager}} (Q\+Object $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{classSerialManager}{Serial\+Manager}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classSerialManager_a8d8fdd485791ee860709268140ea56c1}\label{classSerialManager_a8d8fdd485791ee860709268140ea56c1}} 
+\mbox{\hyperlink{classSerialManager_a8d8fdd485791ee860709268140ea56c1}{$\sim$\+Serial\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \mbox{\hyperlink{classSerialManager}{Serial\+Manager}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSerialManager_a47a2bc52749442cab3ad21afa06b335b}{start\+Reading}} (const Q\+String \&port\+Name, qint32 baud\+Rate)
+\begin{DoxyCompactList}\small\item\em Starts reading data from the specified serial port. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classSerialManager_a4973482b0f2364259c8355d481f2b8dc}\label{classSerialManager_a4973482b0f2364259c8355d481f2b8dc}} 
+void \mbox{\hyperlink{classSerialManager_a4973482b0f2364259c8355d481f2b8dc}{stop\+Reading}} ()
+\begin{DoxyCompactList}\small\item\em Stops reading data from the serial port. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{classSerialManager}{Serial\+Manager}} class manages serial communication. 
+
+This class handles opening, reading, and processing data from a serial port. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSerialManager_aa2d090c2f7dc822a3fb1f3ac432abd0d}\label{classSerialManager_aa2d090c2f7dc822a3fb1f3ac432abd0d}} 
+\index{SerialManager@{SerialManager}!SerialManager@{SerialManager}}
+\index{SerialManager@{SerialManager}!SerialManager@{SerialManager}}
+\doxysubsubsection{\texorpdfstring{SerialManager()}{SerialManager()}}
+{\footnotesize\ttfamily Serial\+Manager\+::\+Serial\+Manager (\begin{DoxyParamCaption}\item[{Q\+Object $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+Constructs a \mbox{\hyperlink{classSerialManager}{Serial\+Manager}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & The parent Q\+Object. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSerialManager_ab1198ed6e99d2cbf7ad4cfc8d4dbfa43}\label{classSerialManager_ab1198ed6e99d2cbf7ad4cfc8d4dbfa43}} 
+\index{SerialManager@{SerialManager}!newData@{newData}}
+\index{newData@{newData}!SerialManager@{SerialManager}}
+\doxysubsubsection{\texorpdfstring{newData}{newData}}
+{\footnotesize\ttfamily void Serial\+Manager\+::new\+Data (\begin{DoxyParamCaption}\item[{double}]{roll\+Value,  }\item[{double}]{pitch\+Value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+Emitted when new data is available from the serial port. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em roll\+Value} & The roll value from the data. \\
+\hline
+{\em pitch\+Value} & The pitch value from the data. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSerialManager_a118b6de8b4151da525d644ff1d2ece98}\label{classSerialManager_a118b6de8b4151da525d644ff1d2ece98}} 
+\index{SerialManager@{SerialManager}!serialPortOpened@{serialPortOpened}}
+\index{serialPortOpened@{serialPortOpened}!SerialManager@{SerialManager}}
+\doxysubsubsection{\texorpdfstring{serialPortOpened}{serialPortOpened}}
+{\footnotesize\ttfamily void Serial\+Manager\+::serial\+Port\+Opened (\begin{DoxyParamCaption}\item[{bool}]{is\+Open }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+Emitted when the serial port is opened or closed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em is\+Open} & True if the serial port is opened, false otherwise. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSerialManager_a47a2bc52749442cab3ad21afa06b335b}\label{classSerialManager_a47a2bc52749442cab3ad21afa06b335b}} 
+\index{SerialManager@{SerialManager}!startReading@{startReading}}
+\index{startReading@{startReading}!SerialManager@{SerialManager}}
+\doxysubsubsection{\texorpdfstring{startReading()}{startReading()}}
+{\footnotesize\ttfamily void Serial\+Manager\+::start\+Reading (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{port\+Name,  }\item[{qint32}]{baud\+Rate }\end{DoxyParamCaption})}
+
+
+
+Starts reading data from the specified serial port. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port\+Name} & The name of the serial port. \\
+\hline
+{\em baud\+Rate} & The baud rate for the serial communication. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/Serial\+Manager.\+h\item 
+src/Serial\+Manager.\+cpp\end{DoxyCompactItemize}

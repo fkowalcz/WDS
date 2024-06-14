@@ -1,0 +1,135 @@
+\hypertarget{classBall}{}\doxysection{Ball Class Reference}
+\label{classBall}\index{Ball@{Ball}}
+
+
+The \mbox{\hyperlink{classBall}{Ball}} class represents a ball in a graphical scene.  
+
+
+
+
+{\ttfamily \#include $<$ball.\+h$>$}
+
+
+
+Inheritance diagram for Ball\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{classBall__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Ball\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{classBall__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBall_a1f1b0db6ebea6bdb25e84e0896f31040}{Ball}} (Q\+Graphics\+Item $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{classBall}{Ball}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBall_abb6bf20e82b7c0b9279e2396f77410a4}{set\+Position}} (double x, double y)
+\begin{DoxyCompactList}\small\item\em Sets the position of the ball. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBall_a28ec06d078286a55c1be6e311b5af93e}\label{classBall_a28ec06d078286a55c1be6e311b5af93e}} 
+void \mbox{\hyperlink{classBall_a28ec06d078286a55c1be6e311b5af93e}{start\+Movement}} ()
+\begin{DoxyCompactList}\small\item\em Starts the movement of the ball. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBall_a9582ac96dd38ebe50ae33cd946cbc1c1}\label{classBall_a9582ac96dd38ebe50ae33cd946cbc1c1}} 
+void \mbox{\hyperlink{classBall_a9582ac96dd38ebe50ae33cd946cbc1c1}{stop\+Movement}} ()
+\begin{DoxyCompactList}\small\item\em Stops the movement of the ball. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBall_a71d734a8264b6949b355f5e56d37d5f7}{fall}} ()
+\begin{DoxyCompactList}\small\item\em Makes the ball fall. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classBall_a2f0399a8366812cdbe6b78833315e534}{is\+Falling}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the ball is falling. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classBall_ac64eae34e53dd5390a0850ca2a6f207e}{is\+Moving}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the ball is moving. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{classBall}{Ball}} class represents a ball in a graphical scene. 
+
+This class manages the position and movement of a ball in a Q\+Graphics\+Scene. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBall_a1f1b0db6ebea6bdb25e84e0896f31040}\label{classBall_a1f1b0db6ebea6bdb25e84e0896f31040}} 
+\index{Ball@{Ball}!Ball@{Ball}}
+\index{Ball@{Ball}!Ball@{Ball}}
+\doxysubsubsection{\texorpdfstring{Ball()}{Ball()}}
+{\footnotesize\ttfamily Ball\+::\+Ball (\begin{DoxyParamCaption}\item[{Q\+Graphics\+Item $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+Constructs a \mbox{\hyperlink{classBall}{Ball}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & The parent Q\+Graphics\+Item. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBall_a71d734a8264b6949b355f5e56d37d5f7}\label{classBall_a71d734a8264b6949b355f5e56d37d5f7}} 
+\index{Ball@{Ball}!fall@{fall}}
+\index{fall@{fall}!Ball@{Ball}}
+\doxysubsubsection{\texorpdfstring{fall()}{fall()}}
+{\footnotesize\ttfamily void Ball\+::fall (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Makes the ball fall. 
+
+This method updates the y-\/coordinate of the ball to simulate falling. The ball moves down by 5 units each time this method is called. If the ball reaches the bottom of the scene, it stops moving. \mbox{\Hypertarget{classBall_a2f0399a8366812cdbe6b78833315e534}\label{classBall_a2f0399a8366812cdbe6b78833315e534}} 
+\index{Ball@{Ball}!isFalling@{isFalling}}
+\index{isFalling@{isFalling}!Ball@{Ball}}
+\doxysubsubsection{\texorpdfstring{isFalling()}{isFalling()}}
+{\footnotesize\ttfamily bool Ball\+::is\+Falling (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Checks if the ball is falling. 
+
+\begin{DoxyReturn}{Returns}
+True if the ball is falling, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBall_ac64eae34e53dd5390a0850ca2a6f207e}\label{classBall_ac64eae34e53dd5390a0850ca2a6f207e}} 
+\index{Ball@{Ball}!isMoving@{isMoving}}
+\index{isMoving@{isMoving}!Ball@{Ball}}
+\doxysubsubsection{\texorpdfstring{isMoving()}{isMoving()}}
+{\footnotesize\ttfamily bool Ball\+::is\+Moving (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Checks if the ball is moving. 
+
+\begin{DoxyReturn}{Returns}
+True if the ball is moving, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBall_abb6bf20e82b7c0b9279e2396f77410a4}\label{classBall_abb6bf20e82b7c0b9279e2396f77410a4}} 
+\index{Ball@{Ball}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!Ball@{Ball}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
+{\footnotesize\ttfamily void Ball\+::set\+Position (\begin{DoxyParamCaption}\item[{double}]{x,  }\item[{double}]{y }\end{DoxyParamCaption})}
+
+
+
+Sets the position of the ball. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the position. \\
+\hline
+{\em y} & The y-\/coordinate of the position. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/ball.\+h\item 
+src/ball.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,149 @@
+\hypertarget{classChartManager}{}\doxysection{Chart\+Manager Class Reference}
+\label{classChartManager}\index{ChartManager@{ChartManager}}
+
+
+The \mbox{\hyperlink{classChartManager}{Chart\+Manager}} class manages roll and pitch charts.  
+
+
+
+
+{\ttfamily \#include $<$Chart\+Manager.\+h$>$}
+
+
+
+Inheritance diagram for Chart\+Manager\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=166pt]{classChartManager__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Chart\+Manager\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=166pt]{classChartManager__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classChartManager_a6e687a75eb3e906f3f04ad9c8fa9ea60}{Chart\+Manager}} (Q\+Object $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{classChartManager}{Chart\+Manager}} object. \end{DoxyCompactList}\item 
+Q\+Chart\+View $\ast$ \mbox{\hyperlink{classChartManager_a58d2b4e7cb2a5056c2f01b18d8293d8e}{get\+Roll\+Chart\+View}} () const
+\begin{DoxyCompactList}\small\item\em Gets the roll chart view. \end{DoxyCompactList}\item 
+Q\+Chart\+View $\ast$ \mbox{\hyperlink{classChartManager_a6c782b30c8ef18214f6ae9d026f1414a}{get\+Pitch\+Chart\+View}} () const
+\begin{DoxyCompactList}\small\item\em Gets the pitch chart view. \end{DoxyCompactList}\item 
+Q\+Chart $\ast$ \mbox{\hyperlink{classChartManager_aaf4a703c0525d6c4ce249db9ad3f8e82}{get\+Roll\+Chart}} () const
+\begin{DoxyCompactList}\small\item\em Gets the roll chart. \end{DoxyCompactList}\item 
+Q\+Chart $\ast$ \mbox{\hyperlink{classChartManager_af4f032f7099b71e9f367c0dd19331561}{get\+Pitch\+Chart}} () const
+\begin{DoxyCompactList}\small\item\em Gets the pitch chart. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classChartManager_a0297902889adf14a980be8764b41ecb6}{update\+Charts}} (qint64 current\+Time, double roll\+Value, double pitch\+Value)
+\begin{DoxyCompactList}\small\item\em Updates the charts with new roll and pitch data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{classChartManager}{Chart\+Manager}} class manages roll and pitch charts. 
+
+This class handles the creation, updating, and retrieval of charts for displaying roll and pitch data. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classChartManager_a6e687a75eb3e906f3f04ad9c8fa9ea60}\label{classChartManager_a6e687a75eb3e906f3f04ad9c8fa9ea60}} 
+\index{ChartManager@{ChartManager}!ChartManager@{ChartManager}}
+\index{ChartManager@{ChartManager}!ChartManager@{ChartManager}}
+\doxysubsubsection{\texorpdfstring{ChartManager()}{ChartManager()}}
+{\footnotesize\ttfamily Chart\+Manager\+::\+Chart\+Manager (\begin{DoxyParamCaption}\item[{Q\+Object $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructs a \mbox{\hyperlink{classChartManager}{Chart\+Manager}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & The parent Q\+Object. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classChartManager_af4f032f7099b71e9f367c0dd19331561}\label{classChartManager_af4f032f7099b71e9f367c0dd19331561}} 
+\index{ChartManager@{ChartManager}!getPitchChart@{getPitchChart}}
+\index{getPitchChart@{getPitchChart}!ChartManager@{ChartManager}}
+\doxysubsubsection{\texorpdfstring{getPitchChart()}{getPitchChart()}}
+{\footnotesize\ttfamily Q\+Chart $\ast$ Chart\+Manager\+::get\+Pitch\+Chart (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the pitch chart. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the Q\+Chart displaying the pitch data. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classChartManager_a6c782b30c8ef18214f6ae9d026f1414a}\label{classChartManager_a6c782b30c8ef18214f6ae9d026f1414a}} 
+\index{ChartManager@{ChartManager}!getPitchChartView@{getPitchChartView}}
+\index{getPitchChartView@{getPitchChartView}!ChartManager@{ChartManager}}
+\doxysubsubsection{\texorpdfstring{getPitchChartView()}{getPitchChartView()}}
+{\footnotesize\ttfamily Q\+Chart\+View $\ast$ Chart\+Manager\+::get\+Pitch\+Chart\+View (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the pitch chart view. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the Q\+Chart\+View displaying the pitch chart. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classChartManager_aaf4a703c0525d6c4ce249db9ad3f8e82}\label{classChartManager_aaf4a703c0525d6c4ce249db9ad3f8e82}} 
+\index{ChartManager@{ChartManager}!getRollChart@{getRollChart}}
+\index{getRollChart@{getRollChart}!ChartManager@{ChartManager}}
+\doxysubsubsection{\texorpdfstring{getRollChart()}{getRollChart()}}
+{\footnotesize\ttfamily Q\+Chart $\ast$ Chart\+Manager\+::get\+Roll\+Chart (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the roll chart. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the Q\+Chart displaying the roll data. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classChartManager_a58d2b4e7cb2a5056c2f01b18d8293d8e}\label{classChartManager_a58d2b4e7cb2a5056c2f01b18d8293d8e}} 
+\index{ChartManager@{ChartManager}!getRollChartView@{getRollChartView}}
+\index{getRollChartView@{getRollChartView}!ChartManager@{ChartManager}}
+\doxysubsubsection{\texorpdfstring{getRollChartView()}{getRollChartView()}}
+{\footnotesize\ttfamily Q\+Chart\+View $\ast$ Chart\+Manager\+::get\+Roll\+Chart\+View (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the roll chart view. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the Q\+Chart\+View displaying the roll chart. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classChartManager_a0297902889adf14a980be8764b41ecb6}\label{classChartManager_a0297902889adf14a980be8764b41ecb6}} 
+\index{ChartManager@{ChartManager}!updateCharts@{updateCharts}}
+\index{updateCharts@{updateCharts}!ChartManager@{ChartManager}}
+\doxysubsubsection{\texorpdfstring{updateCharts()}{updateCharts()}}
+{\footnotesize\ttfamily void Chart\+Manager\+::update\+Charts (\begin{DoxyParamCaption}\item[{qint64}]{current\+Time,  }\item[{double}]{roll\+Value,  }\item[{double}]{pitch\+Value }\end{DoxyParamCaption})}
+
+
+
+Updates the charts with new roll and pitch data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em current\+Time} & The current time in milliseconds. \\
+\hline
+{\em roll\+Value} & The roll value. \\
+\hline
+{\em pitch\+Value} & The pitch value. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/Chart\+Manager.\+h\item 
+src/Chart\+Manager.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,98 @@
+\hypertarget{classTerminalLogger}{}\doxysection{Terminal\+Logger Class Reference}
+\label{classTerminalLogger}\index{TerminalLogger@{TerminalLogger}}
+
+
+The \mbox{\hyperlink{classTerminalLogger}{Terminal\+Logger}} class logs measurements to a Q\+Plain\+Text\+Edit widget.  
+
+
+
+
+{\ttfamily \#include $<$Terminal\+Logger.\+h$>$}
+
+
+
+Inheritance diagram for Terminal\+Logger\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=172pt]{classTerminalLogger__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Terminal\+Logger\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=172pt]{classTerminalLogger__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTerminalLogger_a8ef01d12a38a0066953d14c0c35692c0}{Terminal\+Logger}} (Q\+Plain\+Text\+Edit $\ast$plain\+Text\+Edit, Q\+Object $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{classTerminalLogger}{Terminal\+Logger}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTerminalLogger_aa3277bc544715b48591243646ef8b172}{log\+Measurement}} (double pitch, double roll)
+\begin{DoxyCompactList}\small\item\em Logs the pitch and roll measurements. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{classTerminalLogger}{Terminal\+Logger}} class logs measurements to a Q\+Plain\+Text\+Edit widget. 
+
+This class handles logging pitch and roll measurements to a text widget. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classTerminalLogger_a8ef01d12a38a0066953d14c0c35692c0}\label{classTerminalLogger_a8ef01d12a38a0066953d14c0c35692c0}} 
+\index{TerminalLogger@{TerminalLogger}!TerminalLogger@{TerminalLogger}}
+\index{TerminalLogger@{TerminalLogger}!TerminalLogger@{TerminalLogger}}
+\doxysubsubsection{\texorpdfstring{TerminalLogger()}{TerminalLogger()}}
+{\footnotesize\ttfamily Terminal\+Logger\+::\+Terminal\+Logger (\begin{DoxyParamCaption}\item[{Q\+Plain\+Text\+Edit $\ast$}]{plain\+Text\+Edit,  }\item[{Q\+Object $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+Constructs a \mbox{\hyperlink{classTerminalLogger}{Terminal\+Logger}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em plain\+Text\+Edit} & Pointer to the Q\+Plain\+Text\+Edit widget where logs will be displayed. \\
+\hline
+{\em parent} & The parent Q\+Object. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTerminalLogger_aa3277bc544715b48591243646ef8b172}\label{classTerminalLogger_aa3277bc544715b48591243646ef8b172}} 
+\index{TerminalLogger@{TerminalLogger}!logMeasurement@{logMeasurement}}
+\index{logMeasurement@{logMeasurement}!TerminalLogger@{TerminalLogger}}
+\doxysubsubsection{\texorpdfstring{logMeasurement()}{logMeasurement()}}
+{\footnotesize\ttfamily void Terminal\+Logger\+::log\+Measurement (\begin{DoxyParamCaption}\item[{double}]{pitch,  }\item[{double}]{roll }\end{DoxyParamCaption})}
+
+
+
+Logs the pitch and roll measurements. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pitch} & The pitch measurement. \\
+\hline
+{\em roll} & The roll measurement.\\
+\hline
+\end{DoxyParams}
+This method logs the current pitch and roll measurements to the Q\+Plain\+Text\+Edit widget with a timestamp.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pitch} & The pitch measurement. \\
+\hline
+{\em roll} & The roll measurement. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/Terminal\+Logger.\+h\item 
+src/Terminal\+Logger.\+cpp\end{DoxyCompactItemize}

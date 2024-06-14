@@ -1,0 +1,27 @@
+# Doxyfile configuration file for Doxygen
+
+# Project related information
+PROJECT_NAME           = BalanceGame
+PROJECT_BRIEF = "This project is a game that utilizes Roll, Pitch, and Yaw (RPY) measurements obtained from an Inertial Measurement Unit (IMU). The Pitch angle is specifically used to influence the movement of a virtual ball on a platform. Players must carefully adjust the platform's angle to keep the ball balanced and prevent it from falling off. The game provides a fun and interactive way to demonstrate real-time sensor data processing and control."
+OUTPUT_DIRECTORY       = docs
+
+# If the HTML output is enabled
+GENERATE_HTML          = YES
+
+# The directory to be scanned for input files
+INPUT                  = src inc ui
+
+# Enable recursive search in the directories
+RECURSIVE              = YES
+
+# File types to be scanned
+FILE_PATTERNS          = *.cpp *.h
+
+# If you want to use dot (part of Graphviz) for generating graphs
+HAVE_DOT               = YES
+DOT_PATH               = /usr/bin/dot
+GENERATE_GRAPHICS      = YES
+DOT_GRAPH_MAX_NODES    = 100
+DOT_TRANSPARENT        = YES
+DOT_MULTI_TARGETS      = YES
+

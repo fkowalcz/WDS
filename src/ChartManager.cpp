@@ -1,5 +1,9 @@
 #include "ChartManager.h"
 
+/**
+ * @brief Constructs a ChartManager object.
+ * @param parent The parent QObject.
+ */
 ChartManager::ChartManager(QObject *parent)
     : QObject(parent)
     , rollSeries(new QLineSeries())
@@ -11,39 +15,84 @@ ChartManager::ChartManager(QObject *parent)
     , chartDuration(20 * 1000) // 20 seconds in milliseconds
 {
     // Configure charts
-    setupChart(rollChart, rollSeries, "Roll Angle", "Roll Angle");
-    setupChart(pitchChart, pitchSeries, "Pitch Angle", "Pitch Angle");
+    QDateTimeAxis *axisXRoll = new QDateTimeAxis();
+    axisXRoll->setFormat("hh:mm:ss");
+    axisXRoll->setTitleText("Time");
+
+    QDateTimeAxis *axisXPitch = new QDateTimeAxis();
+    axisXPitch->setFormat("hh:mm:ss");
+    axisXPitch->setTitleText("Time");
+
+    QValueAxis *axisYRoll = new QValueAxis();
+    axisYRoll->setRange(-90, 90);
+    axisYRoll->setTitleText("Roll Angle");
+
+    QValueAxis *axisYPitch = new QValueAxis();
+    axisYPitch->setRange(-90, 90);
+    axisYPitch->setTitleText("Pitch Angle");
+
+    rollChart->addSeries(rollSeries);
+    rollChart->addAxis(axisXRoll, Qt::AlignBottom);
+    rollChart->addAxis(axisYRoll, Qt::AlignLeft);
+    rollSeries->attachAxis(axisXRoll);
+    rollSeries->attachAxis(axisYRoll);
+    rollChart->setTitle("Roll Angle");
+    rollChart->legend()->hide();
+
+    pitchChart->addSeries(pitchSeries);
+    pitchChart->addAxis(axisXPitch, Qt::AlignBottom);
+    pitchChart->addAxis(axisYPitch, Qt::AlignLeft);
+    pitchSeries->attachAxis(axisXPitch);
+    pitchSeries->attachAxis(axisYPitch);
+    pitchChart->setTitle("Pitch Angle");
+    pitchChart->legend()->hide();
 
     rollChartView->setRenderHint(QPainter::Antialiasing);
     pitchChartView->setRenderHint(QPainter::Antialiasing);
 }
 
-ChartManager::~ChartManager()
-{
-    delete rollChartView;
-    delete pitchChartView;
-    delete rollChart;
-    delete pitchChart;
-    delete rollSeries;
-    delete pitchSeries;
-}
-
-QChartView* ChartManager::getRollChartView()
-{
+/**
+ * @brief Gets the roll chart view.
+ * @return A pointer to the QChartView displaying the roll chart.
+ */
+QChartView* ChartManager::getRollChartView() const {
     return rollChartView;
 }
 
-QChartView* ChartManager::getPitchChartView()
-{
+/**
+ * @brief Gets the pitch chart view.
+ * @return A pointer to the QChartView displaying the pitch chart.
+ */
+QChartView* ChartManager::getPitchChartView() const {
     return pitchChartView;
 }
 
-void ChartManager::updateCharts(qint64 currentTime, double rollValue, double pitchValue)
-{
+/**
+ * @brief Gets the roll chart.
+ * @return A pointer to the QChart displaying the roll data.
+ */
+QChart* ChartManager::getRollChart() const {
+    return rollChart;
+}
+
+/**
+ * @brief Gets the pitch chart.
+ * @return A pointer to the QChart displaying the pitch data.
+ */
+QChart* ChartManager::getPitchChart() const {
+    return pitchChart;
+}
+
+/**
+ * @brief Updates the charts with new roll and pitch data.
+ * @param currentTime The current time in milliseconds.
+ * @param rollValue The roll value.
+ * @param pitchValue The pitch value.
+ */
+void ChartManager::updateCharts(qint64 currentTime, double rollValue, double pitchValue) {
     rollSeries->append(currentTime, rollValue);
     pitchSeries->append(currentTime, pitchValue);
 
-    // Update time axis
     QDateTime minTime = QDateTime::fromMSecsSinceEpoch(currentTime - chartDuration);
     QDateTime maxTime = QDateTime::fromMSecsSinceEpoch(currentTime);
 
@@ -59,31 +108,6 @@ void ChartManager::updateCharts(qint64 currentTime, double rollValue, double pit
         axisXPitch->setMax(maxTime);
     }
 
-    // Refresh chart views
     rollChartView->repaint();
     pitchChartView->repaint();
-}
-
-void ChartManager::setChartDuration(qint64 duration)
-{
-    chartDuration = duration;
-}
-
-void ChartManager::setupChart(QChart *chart, QLineSeries *series, const QString &title, const QString &yTitle)
-{
-    QDateTimeAxis *axisX = new QDateTimeAxis();
-    axisX->setFormat("hh:mm:ss");
-    axisX->setTitleText("Time");
-
-    QValueAxis *axisY = new QValueAxis();
-    axisY->setRange(-90, 90);
-    axisY->setTitleText(yTitle);
-
-    chart->addSeries(series);
-    chart->addAxis(axisX, Qt::AlignBottom);
-    chart->addAxis(axisY, Qt::AlignLeft);
-    series->attachAxis(axisX);
-    series->attachAxis(axisY);
-    chart->setTitle(title);
-    chart->legend()->hide();
 }

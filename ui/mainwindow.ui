@@ -57,7 +57,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Plot T-axis +</string>
+     <string>Plot T axis -</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_4">
@@ -70,7 +70,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Plot T-axis -</string>
+     <string>Plot T axis +</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_5">
@@ -83,7 +83,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Width +</string>
+     <string>Width -</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_6">
@@ -96,33 +96,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Width -</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_7">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>640</y>
-      <width>121</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>TBD</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_8">
-    <property name="geometry">
-     <rect>
-      <x>160</x>
-      <y>640</y>
-      <width>121</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>TBD</string>
+     <string>Width +</string>
     </property>
    </widget>
    <widget class="QLCDNumber" name="lcdNumber">
@@ -167,17 +141,40 @@
      </rect>
     </property>
    </widget>
+   <widget class="QLabel" name="labelLedIndicator">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>20</y>
+      <width>16</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
    <widget class="QLabel" name="labelCurrentValue">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>156</y>
-      <width>261</width>
-      <height>61</height>
+      <x>50</x>
+      <y>280</y>
+      <width>20</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="text">
      <string>TextLabel</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBoxLanguage">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>640</y>
+      <width>251</width>
+      <height>25</height>
+     </rect>
     </property>
    </widget>
   </widget>

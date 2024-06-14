@@ -1,0 +1,109 @@
+\hypertarget{classPlatform}{}\doxysection{Platform Class Reference}
+\label{classPlatform}\index{Platform@{Platform}}
+
+
+The \mbox{\hyperlink{classPlatform}{Platform}} class represents a platform in a graphical scene.  
+
+
+
+
+{\ttfamily \#include $<$platform.\+h$>$}
+
+
+
+Inheritance diagram for Platform\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=191pt]{classPlatform__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Platform\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=191pt]{classPlatform__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPlatform_aa2099d1dd305289d3914288eb62cc489}{Platform}} (Q\+Graphics\+Item $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{classPlatform}{Platform}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPlatform_aa9ed4727186ee47d6e51d04fee06161b}{set\+Angle}} (double angle)
+\begin{DoxyCompactList}\small\item\em Sets the angle of the platform. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classPlatform_a0e15c06082a30bd5fb25a70c2e4dc2e3}{paint}} (Q\+Painter $\ast$painter, const Q\+Style\+Option\+Graphics\+Item $\ast$option, Q\+Widget $\ast$widget=nullptr) override
+\begin{DoxyCompactList}\small\item\em Paints the platform. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{classPlatform}{Platform}} class represents a platform in a graphical scene. 
+
+This class manages the appearance and behavior of a platform in a Q\+Graphics\+Scene. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPlatform_aa2099d1dd305289d3914288eb62cc489}\label{classPlatform_aa2099d1dd305289d3914288eb62cc489}} 
+\index{Platform@{Platform}!Platform@{Platform}}
+\index{Platform@{Platform}!Platform@{Platform}}
+\doxysubsubsection{\texorpdfstring{Platform()}{Platform()}}
+{\footnotesize\ttfamily Platform\+::\+Platform (\begin{DoxyParamCaption}\item[{Q\+Graphics\+Item $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+Constructs a \mbox{\hyperlink{classPlatform}{Platform}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & The parent Q\+Graphics\+Item. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPlatform_a0e15c06082a30bd5fb25a70c2e4dc2e3}\label{classPlatform_a0e15c06082a30bd5fb25a70c2e4dc2e3}} 
+\index{Platform@{Platform}!paint@{paint}}
+\index{paint@{paint}!Platform@{Platform}}
+\doxysubsubsection{\texorpdfstring{paint()}{paint()}}
+{\footnotesize\ttfamily void Platform\+::paint (\begin{DoxyParamCaption}\item[{Q\+Painter $\ast$}]{painter,  }\item[{const Q\+Style\+Option\+Graphics\+Item $\ast$}]{option,  }\item[{Q\+Widget $\ast$}]{widget = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Paints the platform. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em painter} & The painter used for drawing. \\
+\hline
+{\em option} & The style options for the item. \\
+\hline
+{\em widget} & The widget being painted on. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPlatform_aa9ed4727186ee47d6e51d04fee06161b}\label{classPlatform_aa9ed4727186ee47d6e51d04fee06161b}} 
+\index{Platform@{Platform}!setAngle@{setAngle}}
+\index{setAngle@{setAngle}!Platform@{Platform}}
+\doxysubsubsection{\texorpdfstring{setAngle()}{setAngle()}}
+{\footnotesize\ttfamily void Platform\+::set\+Angle (\begin{DoxyParamCaption}\item[{double}]{angle }\end{DoxyParamCaption})}
+
+
+
+Sets the angle of the platform. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle} & The angle to set. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/platform.\+h\item 
+src/platform.\+cpp\end{DoxyCompactItemize}
