@@ -3,10 +3,11 @@
 
 #include <QMainWindow>
 #include <QTimer>
-#include <QSerialPort>
+#include "ChartManager.h"
+#include "SerialManager.h"
+#include "TerminalLogger.h"
 #include "platform.h"
 #include "ball.h"
-#include "charts.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -24,8 +25,7 @@ private slots:
     void startCountdown();
     void updateClock();
     void updateAnimation();
-    void updateCharts();
-    void readSerialData();
+    void updateCharts(double rollValue, double pitchValue);
     void increasePlatformWidth();
     void decreasePlatformWidth();
 
@@ -33,14 +33,14 @@ private:
     Ui::MainWindow *ui;
     QTimer *animationTimer;
     QTimer *clockTimer;
-    QSerialPort *serial;
     ChartManager *chartManager;
+    SerialManager *serialManager;
+    TerminalLogger *terminalLogger;
     QGraphicsScene *scene;
     Platform *platform;
     Ball *ball;
     QTime startTime;
     bool isCounting;
-    QString serialBuffer;
     qint64 chartDuration;
 
     void updateBallPosition(double pitch);

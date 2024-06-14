@@ -1,4 +1,4 @@
-#include "charts.h"
+#include "ChartManager.h"
 
 ChartManager::ChartManager(QObject *parent)
     : QObject(parent)

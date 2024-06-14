@@ -20,15 +20,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    src/ChartManager.cpp \
+    src/SerialManager.cpp \
+    src/TerminalLogger.cpp \
     src/ball.cpp \
-    src/charts.cpp \
     src/main.cpp \
     src/mainwindow.cpp \
     src/platform.cpp
 
 HEADERS += \
+    inc/ChartManager.h \
+    inc/SerialManager.h \
+    inc/TerminalLogger.h \
     inc/ball.h \
-    inc/charts.h \
     inc/mainwindow.h \
     inc/platform.h
 

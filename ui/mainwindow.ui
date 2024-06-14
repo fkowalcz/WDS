@@ -17,10 +17,10 @@
    <widget class="QGraphicsView" name="graphicsView_3">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>20</y>
-      <width>961</width>
-      <height>321</height>
+      <x>10</x>
+      <y>10</y>
+      <width>862</width>
+      <height>322</height>
      </rect>
     </property>
    </widget>
@@ -128,8 +128,8 @@
    <widget class="QLCDNumber" name="lcdNumber">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>40</y>
+      <x>30</x>
+      <y>30</y>
       <width>151</width>
       <height>41</height>
      </rect>
@@ -157,13 +157,23 @@
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_2"/>
    </widget>
+   <widget class="QPlainTextEdit" name="plainTextEdit_Terminal">
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>10</y>
+      <width>411</width>
+      <height>321</height>
+     </rect>
+    </property>
+   </widget>
    <widget class="QLabel" name="labelCurrentValue">
     <property name="geometry">
      <rect>
-      <x>470</x>
-      <y>140</y>
-      <width>421</width>
-      <height>81</height>
+      <x>220</x>
+      <y>156</y>
+      <width>261</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="text">
