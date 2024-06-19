@@ -84,14 +84,20 @@ MainWindow::MainWindow(QWidget *parent)
  */
 void MainWindow::changeLanguage(const QString &language)
 {
-    QString qmPath = "translations/translations_" + language + ".qm";
-    if (translator.load(qmPath)) {
-        qApp->installTranslator(&translator);
-        ui->retranslateUi(this);
-    } else {
-        qDebug() << "Failed to load translation file:" << qmPath;
+    int index = ui->comboBoxLanguage->findText(language);
+    if (index != -1) {
+        QString languageCode = ui->comboBoxLanguage->itemData(index).toString();
+        QString qmPath = QString(":/translations/translations_%1.qm").arg(languageCode);
+        if (translator.load(qmPath)) {
+            qApp->installTranslator(&translator);
+            ui->retranslateUi(this);
+            qDebug() << "Language changed to:" << language;
+        } else {
+            qDebug() << "Failed to load translation file:" << qmPath;
+        }
     }
 }
+
 
 /**
  * @brief Destructor for MainWindow.
@@ -157,13 +163,31 @@ void MainWindow::updateCharts(double rollValue, double pitchValue) {
 
     chartManager->updateCharts(currentTime, rollValue, pitchValue);
 
-    ui->labelCurrentValue->setText(QString("Roll: %1, Pitch: %2").arg(rollValue).arg(pitchValue));
-
     terminalLogger->logMeasurement(pitchValue, rollValue);
 
     platform->setAngle(pitchValue);
     updateBallPosition(pitchValue);
+
+    // Apply the current chart duration to the axes
+    QDateTime minTime = QDateTime::fromMSecsSinceEpoch(currentTime - chartDuration);
+    QDateTime maxTime = QDateTime::fromMSecsSinceEpoch(currentTime);
+
+    QDateTimeAxis *axisXRoll = qobject_cast<QDateTimeAxis*>(chartManager->getRollChart()->axes(Qt::Horizontal).first());
+    if (axisXRoll) {
+        axisXRoll->setMin(minTime);
+        axisXRoll->setMax(maxTime);
+    }
+
+    QDateTimeAxis *axisXPitch = qobject_cast<QDateTimeAxis*>(chartManager->getPitchChart()->axes(Qt::Horizontal).first());
+    if (axisXPitch) {
+        axisXPitch->setMin(minTime);
+        axisXPitch->setMax(maxTime);
+    }
+
+    chartManager->getRollChartView()->repaint();
+    chartManager->getPitchChartView()->repaint();
 }
+
 
 /**
  * @brief Updates the ball position based on the pitch value.

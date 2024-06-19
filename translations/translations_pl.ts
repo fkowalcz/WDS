@@ -9,27 +9,27 @@
         <translation type="unfinished">MainWindow-pl</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="71"/>
+        <location filename="../ui/mainwindow.ui" line="72"/>
         <source>Plot T axis -</source>
         <translation type="unfinished">Oś T -</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="78"/>
+        <location filename="../ui/mainwindow.ui" line="65"/>
         <source>Plot T axis +</source>
         <translation type="unfinished">Oś T +</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="87"/>
+        <location filename="../ui/mainwindow.ui" line="53"/>
         <source>Start</source>
         <translation type="unfinished">Odpalaj</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="106"/>
+        <location filename="../ui/mainwindow.ui" line="83"/>
         <source>Width +</source>
         <translation type="unfinished">Szer. belki +</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="113"/>
+        <location filename="../ui/mainwindow.ui" line="90"/>
         <source>Width -</source>
         <translation type="unfinished">Szer. belki -</translation>
     </message>

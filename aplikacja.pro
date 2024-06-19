@@ -39,11 +39,9 @@ TRANSLATIONS += \
     translations/translations_en.ts \
     translations/translations_pl.ts
 
+RESOURCES += translations/translations.qrc
+
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
-
-DISTFILES += \
-    translations/translations_en.qm \
-    translations/translations_pl.qm

@@ -1,9 +1,5 @@
 #include "ChartManager.h"
 
-/**
- * @brief Constructs a ChartManager object.
- * @param parent The parent QObject.
- */
 ChartManager::ChartManager(QObject *parent)
     : QObject(parent)
     , rollSeries(new QLineSeries())
@@ -51,47 +47,34 @@ ChartManager::ChartManager(QObject *parent)
     pitchChartView->setRenderHint(QPainter::Antialiasing);
 }
 
-/**
- * @brief Gets the roll chart view.
- * @return A pointer to the QChartView displaying the roll chart.
- */
 QChartView* ChartManager::getRollChartView() const {
     return rollChartView;
 }
 
-/**
- * @brief Gets the pitch chart view.
- * @return A pointer to the QChartView displaying the pitch chart.
- */
 QChartView* ChartManager::getPitchChartView() const {
     return pitchChartView;
 }
 
-/**
- * @brief Gets the roll chart.
- * @return A pointer to the QChart displaying the roll data.
- */
-QChart* ChartManager::getRollChart() const {
+QChart* ChartManager::getRollChart() const { // Implement this method
     return rollChart;
 }
 
-/**
- * @brief Gets the pitch chart.
- * @return A pointer to the QChart displaying the pitch data.
- */
-QChart* ChartManager::getPitchChart() const {
+QChart* ChartManager::getPitchChart() const { // Implement this method
     return pitchChart;
 }
 
-/**
- * @brief Updates the charts with new roll and pitch data.
- * @param currentTime The current time in milliseconds.
- * @param rollValue The roll value.
- * @param pitchValue The pitch value.
- */
 void ChartManager::updateCharts(qint64 currentTime, double rollValue, double pitchValue) {
     rollSeries->append(currentTime, rollValue);
     pitchSeries->append(currentTime, pitchValue);
+
+    // Keep the data within the chart duration
+    while (!rollSeries->points().isEmpty() && rollSeries->points().first().x() < currentTime - chartDuration) {
+        rollSeries->remove(0);
+    }
+
+    while (!pitchSeries->points().isEmpty() && pitchSeries->points().first().x() < currentTime - chartDuration) {
+        pitchSeries->remove(0);
+    }
 
     QDateTime minTime = QDateTime::fromMSecsSinceEpoch(currentTime - chartDuration);
     QDateTime maxTime = QDateTime::fromMSecsSinceEpoch(currentTime);
@@ -111,3 +94,5 @@ void ChartManager::updateCharts(qint64 currentTime, double rollValue, double pit
     rollChartView->repaint();
     pitchChartView->repaint();
 }
+
+

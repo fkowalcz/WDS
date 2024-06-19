@@ -2,47 +2,28 @@
 #include <QSerialPortInfo>
 #include <QDebug>
 
-/**
- * @brief Calculates the CRC-16-CCITT checksum for the given data.
- *
- * This method calculates the CRC-16-CCITT checksum for a given byte array.
- * The CRC-16-CCITT is a type of cyclic redundancy check used to detect errors
- * in data transmission. This implementation uses a polynomial of 0x1021 and
- * an initial value of 0xFFFF.
- *
- * @param data The data to calculate the checksum for.
- * @return The calculated checksum.
- */
+// CRC calculation function
 uint16_t SerialManager::crc16_ccitt(const QByteArray &data) {
-    uint16_t crc = 0xFFFF;  // Initialize the CRC to 0xFFFF
+    uint16_t crc = 0xFFFF;
     for (char byte : data) {
-        crc ^= static_cast<uint8_t>(byte) << 8;  // XOR byte into the upper 8 bits of crc
-
-        // Process each bit in the byte
+        crc ^= static_cast<uint8_t>(byte) << 8;
         for (int i = 0; i < 8; i++) {
-            if (crc & 0x8000) {  // If the upper bit is set
-                crc = (crc << 1) ^ 0x1021;  // Shift left and XOR with the polynomial 0x1021
+            if (crc & 0x8000) {
+                crc = (crc << 1) ^ 0x1021;
             } else {
-                crc = crc << 1;  // Otherwise, just shift left
+                crc = crc << 1;
             }
         }
     }
-    return crc;  // Return the calculated CRC value
+    return crc;
 }
 
-/**
- * @brief Constructs a SerialManager object.
- * @param parent The parent QObject.
- */
 SerialManager::SerialManager(QObject *parent)
     : QObject(parent), serial(new QSerialPort(this))
 {
     connect(serial, &QSerialPort::readyRead, this, &SerialManager::readSerialData);
 }
 
-/**
- * @brief Destructor for SerialManager.
- */
 SerialManager::~SerialManager()
 {
     if (serial->isOpen()) {
@@ -50,11 +31,6 @@ SerialManager::~SerialManager()
     }
 }
 
-/**
- * @brief Starts reading data from the specified serial port.
- * @param portName The name of the serial port.
- * @param baudRate The baud rate for the serial communication.
- */
 void SerialManager::startReading(const QString &portName, qint32 baudRate)
 {
     serial->setPortName(portName);
@@ -73,9 +49,6 @@ void SerialManager::startReading(const QString &portName, qint32 baudRate)
     }
 }
 
-/**
- * @brief Stops reading data from the serial port.
- */
 void SerialManager::stopReading()
 {
     if (serial->isOpen()) {
@@ -84,12 +57,6 @@ void SerialManager::stopReading()
     }
 }
 
-/**
- * @brief Reads data from the serial port.
- *
- * This method reads incoming data from the serial port, processes it,
- * and emits the newData signal if valid data is received.
- */
 void SerialManager::readSerialData()
 {
     QByteArray data = serial->readAll();
